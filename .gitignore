@@ -205,3 +205,22 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# PyCharm and JetBrains IDE
+.idea/
+*.iml
+
+# (Optionally keep certain shared IDE configs — uncomment if needed)
+# .idea/codeStyles/
+# .idea/runConfigurations/
+# .idea/modules.xml
+# .idea/vcs.xml
+
+# Workspace and user-specific settings
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+.idea/shelf/
+.idea/dataSources.*
+.idea/httpRequests/
