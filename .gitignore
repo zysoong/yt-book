@@ -210,6 +210,9 @@ __marimo__/
 .idea/
 *.iml
 
+# Project specific local files
+downloaded_videos
+
 # (Optionally keep certain shared IDE configs — uncomment if needed)
 # .idea/codeStyles/
 # .idea/runConfigurations/
