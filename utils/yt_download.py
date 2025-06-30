@@ -5,10 +5,9 @@ from yt_dlp import YoutubeDL, DownloadError
 from yt_dlp.utils import ExtractorError
 
 
-def download_videos_from_playlist(playlist_url: str, is_best_quality: bool):
-    base_dir = os.path.join("../", "downloaded_videos")
+def download_videos_from_playlist(playlist_url: str, target_dir: str, is_best_quality: bool = False):
     ydl_opts_download: dict[str, Any] = {
-        "outtmpl": os.path.join(base_dir, "%(playlist_title)s", "%(playlist_index)s - %(title)s.%(ext)s"),
+        "outtmpl": os.path.join(target_dir, "%(playlist_title)s", "%(playlist_index)s - %(title)s.%(ext)s"),
         "restrictfilenames": True
     }
 
