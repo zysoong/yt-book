@@ -23,7 +23,10 @@ def download_videos(video_or_playlist_url: str, target_dir: str, is_best_quality
 
 def extract_information(video_or_playlist_url: str) -> dict[str, Any]:
     ydl_opts_extract_info = {
-        "ignoreerrors": True
+        "skip_download": True,
+        "ignoreerrors": True,
+        "quiet": True,
+        "no_warnings": True
     }
     with YoutubeDL(ydl_opts_extract_info) as ydl:
         return ydl.extract_info(video_or_playlist_url, download=False)
