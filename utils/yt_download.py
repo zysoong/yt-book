@@ -5,7 +5,7 @@ from yt_dlp import YoutubeDL, DownloadError
 from yt_dlp.utils import ExtractorError
 
 
-def download_videos_from_playlist(playlist_url: str, target_dir: str, is_best_quality: bool = False):
+def download_videos(video_or_playlist_url: str, target_dir: str, is_best_quality: bool = False):
     ydl_opts_download: dict[str, Any] = {
         "outtmpl": os.path.join(target_dir, "%(playlist_title)s", "%(playlist_index)s - %(title)s.%(ext)s"),
         "restrictfilenames": True
@@ -16,14 +16,14 @@ def download_videos_from_playlist(playlist_url: str, target_dir: str, is_best_qu
 
     with YoutubeDL(ydl_opts_download) as ydl:
         try:
-            ydl.download(playlist_url)
+            ydl.download(video_or_playlist_url)
         except (ExtractorError, DownloadError) as e:
             print(e)
 
 
-def extract_information_from_playlist(playlist_url: str) -> dict[str, Any]:
+def extract_information(video_or_playlist_url: str) -> dict[str, Any]:
     ydl_opts_extract_info = {
         "ignoreerrors": True
     }
     with YoutubeDL(ydl_opts_extract_info) as ydl:
-        return ydl.extract_info(playlist_url, download=False)
+        return ydl.extract_info(video_or_playlist_url, download=False)
