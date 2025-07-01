@@ -20,8 +20,9 @@ def download_yt_videos_v2(url: str, output_dir: str) -> Generator[dict[str, Any]
         :param output_dir: Output dir of downloaded videos
     """
     ydl_opts_extract = {
-        'extract_flat': True,
-        'quiet': True
+        'extract_flat': False,
+        'quiet': True,
+        'ignoreerrors': True,
     }
 
     with yt_dlp.YoutubeDL(ydl_opts_extract) as ydl:
@@ -29,7 +30,7 @@ def download_yt_videos_v2(url: str, output_dir: str) -> Generator[dict[str, Any]
             info = ydl.extract_info(url, download=False)
 
             if 'entries' in info:
-                video_urls = [entry['url'] for entry in info.get('entries', [])]
+                video_urls = [entry['url'] for entry in info.get('entries', []) if entry is not None and 'url' in entry]
                 print(f"Found {len(video_urls)} videos in playlist")
             else:
                 video_urls = [url]
