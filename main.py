@@ -1,5 +1,5 @@
 import os
-from utils.yt_download import download_videos, extract_information, download_yt_videos_v2
+from utils.yt_download import download_yt_videos_v2
 
 
 def main():
