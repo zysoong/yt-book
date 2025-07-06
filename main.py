@@ -1,7 +1,7 @@
 import asyncio
 
 import os
-from utils.yt_download import __generate_youtube_single_video_urls, download_from_youtube_url
+from utils.yt_download import download_from_youtube_url
 
 
 async def main():
