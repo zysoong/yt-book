@@ -1,7 +1,8 @@
+import os.path
+
 import asyncio
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_audio
 from pathlib import Path
-from moviepy import VideoFileClip
 
 async def convert_to_mp3(
         input_folder: str,
@@ -35,11 +36,14 @@ async def __convert_video_file_to_mp3(
         mp3_output_path: str
 ):
     def _convert():
-        ffmpeg_extract_audio(
-            inputfile=video_file_path,
-            outputfile=mp3_output_path
-        )
-        print(f"✓ Successfully converted to: {mp3_output_path}")
+        if os.path.exists(video_file_path):
+            print(f"{video_file_path} already exists. Skip")
+        else:
+            ffmpeg_extract_audio(
+                inputfile=video_file_path,
+                outputfile=mp3_output_path
+            )
+            print(f"✓ Successfully converted to: {mp3_output_path}")
 
     print("Start converting video to audio" + video_file_path)
     return await asyncio.to_thread(_convert)
