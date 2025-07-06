@@ -1,7 +1,7 @@
 import asyncio
 
 import os
-from typing import Any, Generator
+from typing import Any
 
 import yt_dlp
 from yt_dlp import DownloadError
