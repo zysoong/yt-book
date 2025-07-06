@@ -1,4 +1,5 @@
 import asyncio
+from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_audio
 from pathlib import Path
 from moviepy import VideoFileClip
 
@@ -34,15 +35,10 @@ async def __convert_video_file_to_mp3(
         mp3_output_path: str
 ):
     def _convert():
-        mp4_file = Path(video_file_path)
-        video_clip = VideoFileClip(str(mp4_file))
-        audio_clip = video_clip.audio
-        audio_clip.write_audiofile(
-            str(mp3_output_path),
-            codec="libmp3lame"
+        ffmpeg_extract_audio(
+            inputfile=video_file_path,
+            outputfile=mp3_output_path
         )
-        audio_clip.close()
-        video_clip.close()
         print(f"✓ Successfully converted to: {mp3_output_path}")
 
     print("Start converting video to audio" + video_file_path)

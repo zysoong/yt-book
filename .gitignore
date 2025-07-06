@@ -212,6 +212,7 @@ __marimo__/
 
 # Project specific local files
 downloaded_videos
+converted_audios
 
 # (Optionally keep certain shared IDE configs — uncomment if needed)
 # .idea/codeStyles/
