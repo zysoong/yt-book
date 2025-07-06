@@ -36,8 +36,8 @@ async def __convert_video_file_to_mp3(
         mp3_output_path: str
 ):
     def _convert():
-        if os.path.exists(video_file_path):
-            print(f"{video_file_path} already exists. Skip")
+        if os.path.exists(mp3_output_path):
+            print(f"{mp3_output_path} already exists. Skip")
         else:
             ffmpeg_extract_audio(
                 inputfile=video_file_path,
